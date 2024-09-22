@@ -26,6 +26,5 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-pnpm-lock.yaml
 
 __snapshots__
