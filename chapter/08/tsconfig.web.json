@@ -6,9 +6,11 @@
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
     "types": ["unplugin-vue-macros/macros-global"],
     "skipLibCheck": true,
-    "moduleResolution": "NodeNext"
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsxImportSource": "vue"
   },
-  "include": ["packages", "env.d.ts"],
+  "include": ["packages/*", "env.d.ts"],
   "exclude": [
     "node_modules",
     "**/dist",

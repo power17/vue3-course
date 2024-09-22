@@ -1,38 +1,35 @@
 <template>
-  <div class="app">
-    <div class="text">Count: {{state.count}}</div>
-    <button class="btn" @click="onClick">Add</button>
-  </div>
+  <form>
+    <textarea v-model="state.text" placeholder="信息" />
+    <div>中文字数：{{ state.zhCount }}</div>
+  </form>
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
-  const state = reactive({
-    count: 0
-  });
-  const onClick = () => {
-    state.count ++;
-  }
-</script>
+import { reactive, watch } from 'vue';
 
-<style>
-.app {
-  width: 200px;
-  padding: 10px;
-  margin: 10px auto;
-  box-shadow: 0px 0px 9px #00000066;
-  text-align: center;
+// 计算文本中文个数函数
+function countZhText(txt) {
+  const zhRegExp = /[\u4e00-\u9fa5]{1,}/g;
+  const zhList = txt.match(zhRegExp);
+  let count = 0;
+  zhList?.forEach((item) => {
+    count += item.length;
+  });
+  return count;
 }
-.app .text {
-  font-size: 28px;
-  font-weight: bolder;
-  color: #666666;
-}
-.app .btn {
-  font-size: 20px;
-  padding: 0 10px;
-  height: 32px;
-  min-width: 80px;
-  cursor: pointer;
-} 
-</style>
+const defaultText = '今天是2022年01月01日';
+const state = reactive({
+  text: defaultText,
+  zhCount: countZhText(defaultText),
+});
+
+watch(
+  // 监听 state.text 的变化
+  [state],
+  ([state], [prevText]) => {
+    // 当监听到state.text 变化，就会触发这个回调函数
+    state.zhCount = countZhText(state.text);
+  }
+);
+</script>

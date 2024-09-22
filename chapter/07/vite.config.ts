@@ -4,5 +4,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default defineConfig({
   base: './',
-  plugins: [vue(), vueJsx()]
+  plugins: [vue(), vueJsx()],
+  define: {
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
+  }
 });

@@ -1,11 +1,11 @@
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader/dist/index')
+const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
   entry: {
-    'index' : path.join(__dirname, 'src/index.js'),
+    index: path.join(__dirname, 'src/index.js'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -15,26 +15,21 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        use: [
-          'vue-loader'
-        ]
+        use: ['vue-loader'],
       },
-      {  
+      {
         test: /\.(css|less)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
-    ]
+    ],
   },
   plugins: [
-    new VueLoaderPlugin(), 
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
-    })
+      filename: '[name].css',
+    }),
   ],
   externals: {
-    'vue': 'window.Vue'
-  }
-}
+    vue: 'window.Vue',
+  },
+};

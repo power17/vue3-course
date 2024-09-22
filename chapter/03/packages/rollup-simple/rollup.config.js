@@ -10,41 +10,41 @@ const html = require('@rollup/plugin-html');
 const serve = require('rollup-plugin-serve');
 
 const babelOptions = {
-  "presets": [
-    '@babel/preset-env',
-  ],
-  'babelHelpers': 'bundled'
-}
+  presets: ['@babel/preset-env'],
+  babelHelpers: 'bundled',
+};
 
 module.exports = {
   input: path.join(__dirname, 'src/index.js'),
   output: {
     file: path.join(__dirname, 'dist/index.js'),
-  }, 
+  },
   plugins: [
     vue(),
     postcss({
       extract: true,
-      plugins: []
+      plugins: [],
     }),
     nodeResolve(),
     commonjs(),
     babel(babelOptions),
     replace({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      preventAssignment: true
+      preventAssignment: true,
     }),
     html({
       fileName: 'index.html',
       template: () => {
-        const htmlFilePath = path.join(__dirname, 'index.html')
-        const html = fs.readFileSync(htmlFilePath, { encoding: 'utf8' })
+        const htmlFilePath = path.join(__dirname, 'index.html');
+        const html = fs.readFileSync(htmlFilePath, { encoding: 'utf8' });
         return html;
-      }
+      },
     }),
-    process.env.NODE_ENV === 'development' ? serve({
-      port: 6001,
-      contentBase: 'dist'
-    }) : null
+    process.env.NODE_ENV === 'development'
+      ? serve({
+          port: 6001,
+          contentBase: 'dist',
+        })
+      : null,
   ],
-}
+};

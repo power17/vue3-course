@@ -21,9 +21,9 @@
     "./css/*": "./dist/css/*"
   },
   "devDependencies": {
-    "vue": "^3.2.39"
+    "vue": "^3.5.8"
   },
   "peerDependencies": {
-    "vue": "^3.2.39"
+    "vue": "^3.5.8"
   }
 }

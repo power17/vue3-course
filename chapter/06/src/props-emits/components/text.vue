@@ -1,18 +1,20 @@
 <template>
   <div class="v-text">
     <span>地址：</span>
-    <input :value="props.text"  v-on:input="onInput" />
+    <input :value="props.text.name" v-on:input="onInput" />
+    {{ props.text }}
   </div>
 </template>
 
-<script setup >
+<script setup>
 const props = defineProps({
-  text: String,
+  text: Object,
 });
 const emits = defineEmits(['updateText']);
-const onInput = (e) =>  {
-  emits('updateText', e.target.value);
-}
+const onInput = (e) => {
+  // emits('updateText', e.target.value);
+  props.text.name = e.target.value;
+};
 </script>
 
 <style>

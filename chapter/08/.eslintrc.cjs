@@ -11,6 +11,7 @@ module.exports = {
     '@vue/eslint-config-typescript/recommended',
     '@vue/eslint-config-prettier'
   ],
+  exclude: ['dist'],
   rules: {
     // 单引号限制
     quotes: ['error', 'single'],
