@@ -4,11 +4,17 @@
     "composite": true,
     "jsx": "preserve",
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
-    "types": ["unplugin-vue-macros/macros-global"],
     "skipLibCheck": true,
-    "moduleResolution": "NodeNext"
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsxImportSource": "vue"
   },
-  "include": ["packages", "env.d.ts"],
+  "include": [
+    "packages/*",
+    "env.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "**/dist",
@@ -16,6 +22,7 @@
     "**/gulpfile.ts",
     "**/test-helper",
     "packages/test-utils",
-    "**/*.md"
+    "**/*.md",
+    "scripts/*.ts"
   ]
 }

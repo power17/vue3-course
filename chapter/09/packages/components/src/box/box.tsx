@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { prefixName } from '../theme/index';
+import { prefixName } from '../theme/prefix';
 
 export const Box = defineComponent({
   props: {

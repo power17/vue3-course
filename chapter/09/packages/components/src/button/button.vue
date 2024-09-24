@@ -2,8 +2,7 @@
   <button
     :class="{
       [baseClassName]: true,
-      [btnClassName]: true,
-      [disabledClassName]: props.disabled
+      [btnClassName]: true
     }"
   >
     <slot v-if="$slots.default"></slot>
@@ -11,17 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import { prefixName } from '../theme/index';
-
-type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
-
-type ButtonVariant = 'contained' | 'outlined';
-
+import { prefixName } from '../theme/prefix';
+import type { ButtonType, ButtonVariant } from './types';
 const props = withDefaults(
   defineProps<{
     type?: ButtonType;
     variant?: ButtonVariant;
-    disabled?: boolean;
   }>(),
   {
     type: 'default',
@@ -32,5 +26,4 @@ const props = withDefaults(
 
 const baseClassName = `${prefixName}-button`;
 const btnClassName = `${baseClassName}-${props.type}-${props.variant}`;
-const disabledClassName = `${baseClassName}-disabled`;
 </script>

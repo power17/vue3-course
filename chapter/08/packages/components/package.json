@@ -1,6 +1,7 @@
 {
   "name": "@my/components",
   "version": "0.0.1",
+  "type": "module",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
   "types": "dist/esm/index.d.ts",
