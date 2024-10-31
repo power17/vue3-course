@@ -1,0 +1,9 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.lib.json",
+  "compilerOptions": {
+    "composite": true,
+    "target": "ESNext",
+    "ignoreDeprecations": "5.0"
+  },
+  "include": ["scripts"]
+}
