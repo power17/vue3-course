@@ -1,19 +1,20 @@
-import { createApp, h, render } from 'vue';
+import { createApp, h } from 'vue';
 import MessageComponent from './message.vue';
 import { MessageParams } from './types';
 
 const Message = {
   open(param: MessageParams) {
-    const dom = document.querySelector('body') as HTMLBodyElement;
+    const dom = document.createElement('div');
+    const body = document.querySelector('body') as HTMLBodyElement;
     const duration = param.duration || 3000;
     const msg = h(MessageComponent, {
       text: param.text,
       type: param.type
     });
-    console.log(msg, 'msg');
+    body.appendChild(dom);
     const app = createApp({
       render() {
-        return h(msg);
+        return msg;
       }
     });
     app.mount(dom);

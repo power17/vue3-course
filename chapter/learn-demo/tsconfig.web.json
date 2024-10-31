@@ -13,7 +13,8 @@
     "packages/*",
     "env.d.ts",
     "packages/**/*.tsx",
-    "packages/**/*.ts"
+    "packages/**/*.ts",
+    "packages/**/*.vue"
   ],
   "exclude": [
     "node_modules",

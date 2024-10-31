@@ -1,8 +1,9 @@
-import { onMounted } from 'vue';
 <template>
-  <div v-if="show" :class="[baseClassName, typeClassName]">
-    <p>{{ props.text }}</p>
-  </div>
+  <Transition :name="fadeClassName">
+    <div v-if="show" :class="[baseClassName, typeClassName]">
+      <p>{{ props.text }}</p>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -32,6 +33,7 @@ defineExpose<{
 }>({
   closeMessage: closeMessage
 });
+const fadeClassName = `${baseClassName}-fade`;
 </script>
 
 <style lang="scss" scoped></style>

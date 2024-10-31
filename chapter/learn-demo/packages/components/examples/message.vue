@@ -1,25 +1,68 @@
 <template>
-  <div @click="open">open12132</div>
+  <div>
+    <button @click="onClick">打开的信息提示</button>
+    <button @click="onClickFixed">打开固定的信息提示</button>
+    <button @click="onClickCloseFixed">关闭固定的信息提示</button>
+  </div>
+  <div>
+    <button @click="onClickInfo">info信息提示</button>
+    <button @click="onClickSuccess">success信息提示</button>
+    <button @click="onClickWarn">warn信息提示</button>
+    <button @click="onClickError">error信息提示</button>
+  </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Message from '../src/message';
 
-const open = () => {
-  // 自动关闭
+const onClick = () => {
   Message.open({
-    text: '这是一个success类型的消息提醒组件，5秒后自动关闭',
-    type: 'success',
-    duration: 5000
+    text: '您好，这是默认的信息提示',
+    duration: 1000
   });
 };
 
-// const msg = Message.open({
-//   text: '这是一个success类型的消息提醒组件，不会自动关闭',
-//   type: 'success',
-//   duration: 0
-// });
-// 如果要关闭，就执行 msg.close() 来关闭这个组件
-</script>
+let msg: { close: () => void } | null = null;
+const onClickFixed = () => {
+  msg = Message.open({
+    text: '您好，这是固定的信息提示，不会自动关闭',
+    duration: 0
+  });
+};
 
-<style lang="scss" scoped></style>
+const onClickCloseFixed = () => {
+  msg?.close();
+};
+
+const onClickInfo = () => {
+  Message.open({
+    text: '您好，这是一个info提示',
+    type: 'info',
+    duration: 1000
+  });
+};
+
+const onClickSuccess = () => {
+  Message.open({
+    text: '您好，这是一个info提示',
+    type: 'success',
+    duration: 2000
+  });
+};
+
+const onClickWarn = () => {
+  Message.open({
+    text: '您好，这是一个warn提示',
+    type: 'warn',
+    duration: 1000
+  });
+};
+
+const onClickError = () => {
+  Message.open({
+    text: '您好，这是一个error提示',
+    type: 'error',
+    duration: 1000
+  });
+};
+</script>
